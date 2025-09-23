@@ -11,7 +11,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     text-align: center;
-    background-color: #f9f9f9;
+    background: #f0f0f0 url('../static/img/fondo_login.png') no-repeat center center / cover ;
     color: #333;
     height: 100%;
 }
@@ -78,7 +78,7 @@ input:focus {
 button {
     width: 100%;
     height: 45px;
-    background-color: #0065ad;
+    background-color: #da4116;
     color: white;
     font-weight: bold;
     font-size: 1rem;
@@ -90,5 +90,5 @@ button {
 }
 
 button:hover {
-    background-color: #022e4b;
+    background-color: #922000;
 }
