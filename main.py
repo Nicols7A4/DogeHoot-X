@@ -4,7 +4,6 @@ import pymysql.cursors
 app = Flask(__name__)
 
 def conectar_bd():
-    """Conecta a la base de datos MySQL. Lanza excepciones si falla."""
     try:
         connection = pymysql.connect(
             host='localhost',
@@ -13,7 +12,7 @@ def conectar_bd():
             password='',
             charset='utf8mb4',
             cursorclass=pymysql.cursors.DictCursor,
-            connect_timeout=5 # Agregado para que no espere indefinidamente
+            connect_timeout=5
         )
         
         with connection.cursor() as cursor:
@@ -37,21 +36,15 @@ def conectar_bd():
         return connection
     except pymysql.err.OperationalError as e:
         print(f"Error de conexión operacional: {e}")
-        # Relanzamos la excepción para que la ruta la maneje
         raise 
     except Exception as e:
         print(f"Error inesperado en la conexión a la BD: {e}")
-        # Relanzamos para que la ruta lo maneje
         raise
 
 def validar_usuario(correo, contrasena):
-    """Valida las credenciales del usuario. Lanza excepciones si falla."""
     connection = conectar_bd()
     try:
         with connection.cursor() as cursor:
-            # Renombramos 'contrasena' a 'password' para la prueba de error
-            # Si la columna se llama 'contrasena' esto funcionará,
-            # si se llama 'password' esto fallará como se pide
             cursor.execute(
                 "SELECT id_usuario, nombre_completo, nombre_usuario, tipo_cuenta FROM usuario WHERE correo_electronico=%s AND contrasena=%s",
                 (correo, contrasena)
@@ -66,7 +59,6 @@ def validar_usuario(correo, contrasena):
             connection.close()
 
 def listar_usuarios():
-    """Lista todos los usuarios. Lanza excepciones si falla."""
     connection = conectar_bd()
     try:
         with connection.cursor() as cursor:
@@ -131,11 +123,10 @@ def login():
             else:
                 return render_template('login.html', mensaje="Credenciales incorrectas")
 
-        # --- CAPTURA DE ERRORES ESPECÍFICOS ---
         except pymysql.err.OperationalError:
-            return render_template('error_sistema.html', mensaje='El servicio de Base de Datos no está disponible. ¿Iniciaste XAMPP?')
+            return render_template('error_sistema.html', mensaje='El servicio de Base de Datos no está disponible.')
         except pymysql.err.ProgrammingError:
-            return render_template('error_sistema.html', mensaje='Error en la consulta: La tabla o una de sus columnas (ej. "contrasena") no existe.')
+            return render_template('error_sistema.html', mensaje='Error en la consulta: La tabla o una de sus columnas no existe.')
         except Exception as e:
             return render_template('error_sistema.html', mensaje=f'Ocurrió un error inesperado: {str(e)}')
 
@@ -164,9 +155,8 @@ def registro():
             else:
                 return render_template('registro.html', mensaje=mensaje)
 
-        # --- CAPTURA DE ERRORES ESPECÍFICOS ---
         except pymysql.err.OperationalError:
-            return render_template('error_sistema.html', mensaje='El servicio de Base de Datos no está disponible. ¿Iniciaste XAMPP?')
+            return render_template('error_sistema.html', mensaje='El servicio de Base de Datos no está disponible.')
         except pymysql.err.ProgrammingError:
             return render_template('error_sistema.html', mensaje='Error en la consulta: La tabla "usuario" o una de sus columnas no existe.')
         except Exception as e:
@@ -178,21 +168,3 @@ def registro():
 def home():
     return render_template('home.html')
 
-@app.route('/debug')
-def debug():
-    try:
-        usuarios = listar_usuarios()
-        return f"<h1>Debug - Usuarios registrados:</h1><pre>{usuarios}</pre><br><a href='/'>Volver al inicio</a>"
-    # --- CAPTURA DE ERRORES ESPECÍFICOS ---
-    except pymysql.err.OperationalError:
-        return render_template('error_sistema.html', mensaje='El servicio de Base de Datos no está disponible. ¿Iniciaste XAMPP?')
-    except pymysql.err.ProgrammingError:
-        return render_template('error_sistema.html', mensaje='Error en la consulta: La tabla "usuario" no existe. (Prueba de error para la ruta de debug)')
-    except Exception as e:
-        return render_template('error_sistema.html', mensaje=f'Ocurrió un error inesperado: {str(e)}')
-
-# ====================================
-# FUNCIÓN PRINCIPAL
-# ====================================
-if __name__ == '__main__':
-    app.run(debug=True)
