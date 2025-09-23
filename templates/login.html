@@ -14,7 +14,7 @@
         <h1>¡Bienvenido a DogeHoot-X!</h1>
     </div>
     <div class="contenedor-formulario">
-        <form class="formulario" action="{{ url_for('procesar_login')}}" method="post">
+        <form class="formulario" action="{{ url_for('login')}}" method="post">
             <div class="f-fila">
                 <span>Correo electrónico</span>
                 <input type="email" placeholder="Ingresa tu correo electrónico" name="correologin">
@@ -27,7 +27,7 @@
             <span>¿Olvidaste tu contraseña?</span>
             <button type="">Inciar Sesión con Google</button>
             <span>¿Aún no tienes una cuenta?</span>
-            <button>Registrarse</button>
+            <a href="/registro"><button type="button">Registrarse</button></a>
         </form>
     </div>
 </body>

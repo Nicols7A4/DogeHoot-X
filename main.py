@@ -37,9 +37,10 @@ def conexion(host='localhost', user='root', password='', charset='utf8mb4'):
                 """
                 CREATE TABLE IF NOT EXISTS usuario (
                     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-                    nombre_usuario VARCHAR(100) NOT NULL,
+                    nombre_usuario VARCHAR(100) NOT NULL UNIQUE,
                     correo_electronico VARCHAR(255) NOT NULL UNIQUE,
-                    contrasena VARCHAR(255) NOT NULL
+                    contrasena VARCHAR(255) NOT NULL,
+                    tipo char(1) not null
                 )
                 """
             )
@@ -59,7 +60,41 @@ def inicio():
 
 @app.route('/registro', methods=['GET','POST'])
 def registro():
+    # return render_template('registro.html')
+    return redirect(url_for('verificarRegistro'))
+
+@app.route('/verificarRegistro', methods=['GET','POST'])
+def verificarRegistro():
     return render_template('registro.html')
+
+def nuevoUsuario():
+    nombre = request.form['nombre']
+    usuario =  request.form['usuario']
+    correo =  request.form['correo']
+    contrasena =  request.form['contrasena']
+    tipoCuenta =  request.form['tipoCuenta']
+    connection = conexion()
+    
+    print(nombre, usuario, correo, contrasena, tipoCuenta)
+    
+    if connection:
+        with connection:
+            with connection.cursor() as cursor:
+                sql = "SELECT `correo_electronico`,`contrasena` FROM `usuario` WHERE `nombre_usuario`=%s or `correo_electronico`=%s"
+                cursor.execute(sql, (id))
+                result = cursor.fetchone()
+            if result:
+                connection.commit()
+                return "<p>El usuario o el correo ya se encuentra en uso, por favor eliga otro</p>"
+            else:
+                sql = "INSERT INTO `usuario` (`correo_electronico`) VALUES (%s)"
+                cursor.execute(sql, (id))
+                result = cursor.fetchone()
+                connection.commit()
+                return "<p>Registro correcto, inicie sesión para comprobar su cuenta</p>"
+        return "<p>VACIO</p>"
+    return "<p>No fue posible contactar con la base de datos</p>"
+
 
 @app.route('/login', methods=['GET','POST'])
 def login():
