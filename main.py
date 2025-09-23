@@ -20,19 +20,19 @@ def conectar_bd():
         
         connection.select_db('dogehoot')
         
-        with connection.cursor() as cursor:
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS usuario (
-                    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-                    nombre_completo VARCHAR(100) NOT NULL,
-                    nombre_usuario VARCHAR(100) NOT NULL UNIQUE,
-                    correo_electronico VARCHAR(255) NOT NULL UNIQUE,
-                    contrasena VARCHAR(255) NOT NULL,
-                    tipo_cuenta VARCHAR(20) NOT NULL,
-                    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            """)
-        connection.commit() # Aseguramos la creación de la tabla
+        # with connection.cursor() as cursor:
+        #     cursor.execute("""
+        #         CREATE TABLE IF NOT EXISTS usuario (
+        #             id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+        #             nombre_completo VARCHAR(100) NOT NULL,
+        #             nombre_usuario VARCHAR(100) NOT NULL UNIQUE,
+        #             correo_electronico VARCHAR(255) NOT NULL UNIQUE,
+        #             contrasena VARCHAR(255) NOT NULL,
+        #             tipo_cuenta VARCHAR(20) NOT NULL,
+        #             fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        #         )
+        #     """)
+        # connection.commit() # Aseguramos la creación de la tabla
         return connection
     except pymysql.err.OperationalError as e:
         print(f"Error de conexión operacional: {e}")
@@ -58,20 +58,20 @@ def validar_usuario(correo, contrasena):
         if connection:
             connection.close()
 
-def listar_usuarios():
-    connection = conectar_bd()
-    try:
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM usuario") # Esta línea fallará si la tabla 'usuario' no existe
-            usuarios = cursor.fetchall()
-            print(f"DEBUG - Usuarios en la BD: {usuarios}")
-            return usuarios
-    except pymysql.err.ProgrammingError as e:
-        print(f"Error de programación al listar: {e}")
-        raise # Relanzamos para que la ruta lo maneje
-    finally:
-        if connection:
-            connection.close()
+# def listar_usuarios():
+#     connection = conectar_bd()
+#     try:
+#         with connection.cursor() as cursor:
+#             cursor.execute("SELECT * FROM usuario")
+#             usuarios = cursor.fetchall()
+#             print(f"DEBUG - Usuarios en la BD: {usuarios}")
+#             return usuarios
+#     except pymysql.err.ProgrammingError as e:
+#         print(f"Error de programación al listar: {e}")
+#         raise 
+#     finally:
+#         if connection:
+#             connection.close()
 
 def registrar_usuario(nombre_completo, nombre_usuario, correo, contrasena, tipo_cuenta):
     """Registra un nuevo usuario. Lanza excepciones si falla."""
@@ -93,18 +93,17 @@ def registrar_usuario(nombre_completo, nombre_usuario, correo, contrasena, tipo_
             return True, "Usuario registrado exitosamente"
     except pymysql.err.ProgrammingError as e:
         print(f"Error de programación en el registro: {e}")
-        raise # Relanzamos para que la ruta lo maneje
+        raise 
     finally:
         if connection:
             connection.close()
 
 # ====================================
-# RUTAS PRINCIPALES (CON MANEJO DE ERRORES)
-# ====================================
+
 
 @app.route('/')
 def inicio():
-    return render_template('inicio.html') # Asumiendo que tienes un inicio.html, si no, usa tu código HTML directo
+    return render_template('inicio.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
