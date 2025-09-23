@@ -46,7 +46,8 @@ def conexion(host='localhost', user='root', password='', charset='utf8mb4'):
         return connection
     except Exception:
         connection.close()
-        raise
+        #raise
+        return None
 
 @app.route('/')
 def inicio():
