@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/registro.css')}}">
     <title>Registro</title>
 </head>
+
 <body>
-    <form action="{{url_for('verificarRegistro')}}" method="post">
+    {% if mensaje %}
+    <p>{{ mensaje }}</p>
+    {% endif %}
+
+    <form action="{{url_for('registro')}}" method="post">
         <label for="nombre">Nombre Completo</label>
         <input type="text" name="nombre">
         <br><br>
@@ -25,11 +31,12 @@
         <br><br>
 
         <label for="tipoCuenta">Elige tu tipo de cuenta</label>
-        <input type="radio" name="tipoCuenta" value="Estudiante">
-        <input type="radio" name="tipoCuenta" value="Profesor">
+        <input type="radio" name="tipoCuenta" value="Estudiante">Estudiante
+        <input type="radio" name="tipoCuenta" value="Profesor">Profesor
         <br><br>
 
         <input type="submit" value="Registrarse">
     </form>
 </body>
+
 </html>
