@@ -14,7 +14,7 @@ def obtenerconexion():
     try:
         connection = pymysql.connect(
             host='localhost',
-            port=3306,
+            port=3307,
             user='root',
             password='',
             database='dawa_bd',
@@ -57,4 +57,4 @@ def nuevoUsuario():
                 connection.commit()
                 return "<p>Registro correcto, inicie sesión para comprobar su cuenta</p>"
         return "<p>VACIO</p>"
-    return "<p>No fue posible contactar con la base de datos</p>"
+    return render_template('error_sistema.html',mensaje='Servicio de BD no disponible')
