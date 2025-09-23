@@ -23,13 +23,20 @@ body {
     flex-direction: column;
     gap: 0.6rem;
     padding: 1rem;
+    color: rgb(0, 0, 0);
+}
+img{
+    height: auto;
+    width: 400px;
 }
 
 .contenedor-formulario {
+    
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    gap: 40px;
 }
 
 .formulario {
