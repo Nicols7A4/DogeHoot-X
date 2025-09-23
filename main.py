@@ -5,4 +5,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "<h1>Hola</h1>"
+    return """
+                <h1>Hola</h1>
+                <a href="/login">Login</a>
+                <a href="/registro">Registro</a>
+            """
+
+@app.route('/registro')
+def registro():
+    return render_template('registro.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
