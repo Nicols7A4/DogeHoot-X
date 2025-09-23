@@ -4,39 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/registro.css')}}">
+    <link rel="stylesheet" href="../static/css/registro.css">
     <title>Registro</title>
 </head>
 
 <body>
-    {% if mensaje %}
-    <p>{{ mensaje }}</p>
-    {% endif %}
+    <div class="contenedor-formulario">
+        <div class="cabecera">
+            <h1>Registro</h1>
+            <h1>¡Únete a DogeHoot-X!</h1>
+            <img src="../static/img/logo.png" alt="Logo">
+        </div>
 
-    <form action="{{url_for('registro')}}" method="post">
-        <label for="nombre">Nombre Completo</label>
-        <input type="text" name="nombre">
-        <br><br>
+        <form class="formulario" action="{{ url_for('registro') }}" method="post">
+            {% if mensaje %}
+            <p>{{ mensaje }}</p>
+            {% endif %}
 
-        <label for="usuario">Nombre de Usuario</label>
-        <input type="text" name="usuario">
-        <br><br>
+            <div class="f-fila">
+                <span>Nombre Completo</span>
+                <input type="text" name="nombre" placeholder="Ingresa tu nombre completo">
+            </div>
 
-        <label for="correo">Correo Electrónico</label>
-        <input type="email" name="correo">
-        <br><br>
+            <div class="f-fila">
+                <span>Nombre de Usuario</span>
+                <input type="text" name="usuario" placeholder="Crea tu nombre de usuario">
+            </div>
 
-        <label for="contrasena">Contraseña</label>
-        <input type="password" name="contrasena">
-        <br><br>
+            <div class="f-fila">
+                <span>Correo Electrónico</span>
+                <input type="email" name="correo" placeholder="Ingresa tu correo electrónico">
+            </div>
 
-        <label for="tipoCuenta">Elige tu tipo de cuenta</label>
-        <input type="radio" name="tipoCuenta" value="Estudiante">Estudiante
-        <input type="radio" name="tipoCuenta" value="Profesor">Profesor
-        <br><br>
+            <div class="f-fila">
+                <span>Contraseña</span>
+                <input type="password" name="contrasena" placeholder="Crea una contraseña segura">
+            </div>
 
-        <input type="submit" value="Registrarse">
-    </form>
+            <div class="f-fila">
+                <span>Elige tu tipo de cuenta</span>
+                <label class="radio-linea">
+                    <input type="radio" name="tipoCuenta" value="Estudiante">
+                    Estudiante
+                </label>
+                <label class="radio-linea">
+                    <input type="radio" name="tipoCuenta" value="Profesor">
+                    Profesor
+                </label>
+            </div>
+
+            <input type="submit" value="Registrarse">
+        </form>
+    </div>
 </body>
 
 </html>
