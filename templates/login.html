@@ -9,12 +9,16 @@
 </head>
 
 <body>
+    <div class="cabecera">
+        <h1>Iniciar Sesión</h1>
+        <h1>¡Bienvenido a DogeHoot-X!</h1>
+    </div>
+
+    <p>
+        {{ mensaje }}
+    </p>
+
     <div class="contenedor-formulario">
-        <div class="cabecera">
-            <h1>Iniciar Sesión</h1>
-            <h1>¡Bienvenido a DogeHoot-X!</h1>
-            
-        </div>
         <form class="formulario" action="{{ url_for('procesar_login')}}" method="post">
             <div class="f-fila">
                 <span>Correo electrónico</span>
