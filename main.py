@@ -3,6 +3,39 @@ import pymysql.cursors
 
 app = Flask(__name__)
 
+# Funcion para conectar a la base de datos y asegurar que la tabla exista - Lo agregó Pame
+def conexion(host='localhost', user='root', password='', charset='utf8mb4'):
+    """Ensure the dogehoot database and usuario table exist, then return a connection."""
+    connection = pymysql.connect(
+        host=host,
+        user=user,
+        password=password,
+        charset=charset,
+        cursorclass=pymysql.cursors.DictCursor,
+        autocommit=True,
+    )
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "CREATE DATABASE IF NOT EXISTS dogehoot "
+            )
+        connection.select_db('dogehoot')
+        with connection.cursor() as cursor:
+            cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS usuario (
+                    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+                    nombre_usuario VARCHAR(100) NOT NULL,
+                    correo_electronico VARCHAR(255) NOT NULL UNIQUE,
+                    contrasena VARCHAR(255) NOT NULL
+                )
+                """
+            )
+        return connection
+    except Exception:
+        connection.close()
+        raise
+
 @app.route('/')
 def home():
     return """
