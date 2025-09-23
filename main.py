@@ -3,6 +3,11 @@ import pymysql.cursors
 
 app = Flask(__name__)
 
+
+def conectar_a_bd():
+    conexion = None
+    return conexion
+
 @app.route('/')
 def home():
     return """
