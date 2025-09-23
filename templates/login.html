@@ -10,7 +10,7 @@
 
 <body>
     <div class="cabecera">
-        <h1>Iniciar Sesión</h1>W
+        <h1>Iniciar Sesión</h1>
         <h1>¡Bienvenido a DogeHoot-X!</h1>
     </div>
 
@@ -18,21 +18,23 @@
         {{ mensaje }}
     </p>
 
-    <form class="formulario" action="{{ url_for('login')}}" method="post">
-        <div class="f-fila">
-            <span>Correo electrónico</span>
-            <input type="email" placeholder="Ingresa tu correo electrónico" name="correologin">
-        </div>
-        <div class="f-fila">
-            <span>Contraseña</span>
-            <input type="password" placeholder="Ingresa tu contraseña" name="contrasenaLogin">
-        </div>
-        <button type="submit">Iniciar Sesión</button>
-        <span>¿Olvidaste tu contraseña?</span>
-        <button type="">Inciar Sesión con Google</button>
-        <span>¿Aún no tienes una cuenta?</span>
-        <button>Registrarse</button>
-    </form>
+    <div class="contenedor-formulario">
+        <form class="formulario" action="{{ url_for('procesar_login')}}" method="post">
+            <div class="f-fila">
+                <span>Correo electrónico</span>
+                <input type="email" placeholder="Ingresa tu correo electrónico" name="correologin">
+            </div>
+            <div class="f-fila">
+                <span>Contraseña</span>
+                <input type="password" placeholder="Ingresa tu contraseña" name="contrasenaLogin">
+            </div>
+            <button type="submit">Iniciar Sesión</button>
+            <span>¿Olvidaste tu contraseña?</span>
+            <button type="">Inciar Sesión con Google</button>
+            <span>¿Aún no tienes una cuenta?</span>
+            <button>Registrarse</button>
+        </form>
+    </div>
 </body>
 
 </html>

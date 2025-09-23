@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/registro.css')}}">
+    <title>Registro</title>
+</head>
+<body>
+    <form action="{{url_for('verificarRegistro')}}" method="post">
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" name="nombre">
+        <br><br>
+
+        <label for="usuario">Nombre de Usuario</label>
+        <input type="text" name="usuario">
+        <br><br>
+
+        <label for="correo">Correo Electrónico</label>
+        <input type="email" name="correo">
+        <br><br>
+
+        <label for="contrasena">Contraseña</label>
+        <input type="password" name="contrasena">
+        <br><br>
+
+        <label for="tipoCuenta">Elige tu tipo de cuenta</label>
+        <input type="radio" name="tipoCuenta" value="Estudiante">
+        <input type="radio" name="tipoCuenta" value="Profesor">
+        <br><br>
+
+        <input type="submit" value="Registrarse">
+    </form>
+</body>
+</html>
