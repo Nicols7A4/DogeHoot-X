@@ -64,6 +64,7 @@ def registro():
 
 @app.route('/verificarRegistro', methods=['GET','POST'])
 def verificarRegistro():
+    nuevoUsuario()
     return render_template('registro.html')
 
 def nuevoUsuario():
