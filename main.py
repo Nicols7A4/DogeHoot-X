@@ -11,7 +11,7 @@ def conectar_a_bd():
 
 def obtener_usuario():
     user_id = request.args.get('user_id')
-    if not user_id: redirect(url_for('home'))
+    if not user_id: redirect(url_for('inicio'))
     user = None # Buscar en BD
     return user
 
@@ -49,7 +49,7 @@ def conexion(host='localhost', user='root', password='', charset='utf8mb4'):
         raise
 
 @app.route('/')
-def home():
+def inicio():
     return """
                 <h1>Hola</h1>
                 <a href="/login">Login</a>
@@ -63,9 +63,17 @@ def registro():
 @app.route('/login', methods=['GET','POST'])
 def login():
     if request.method == 'POST':
-        correo = request.form['correo']
-        password = request.form['password']
+        correo = request.form['correologin']
+        password = request.form['contrasenaLogin']
+        error = None
         
         print(correo, password)
         
+        if not error:
+            return redirect(url_for('home'))
+        
     return render_template('login.html')
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
