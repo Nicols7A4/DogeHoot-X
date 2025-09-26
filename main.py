@@ -46,7 +46,7 @@ def validar_usuario(correo, contrasena):
     try:
         with connection.cursor() as cursor:
             cursor.execute(
-                "SELECT id_usuario, nombre_completo, nombre_usuario, tipo_cuenta FROM usuario WHERE correo_electronico=%s AND contrasena=%s",
+                "SELECT id_usuario, nombre_completo, nombre_usuario, tipo_cuenta FROM usuarios WHERE correo_electronico=%s AND contrasena=%s",
                 (correo, contrasena)
             )
             usuario = cursor.fetchone()

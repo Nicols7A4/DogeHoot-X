@@ -144,3 +144,14 @@ input[type="submit"]:hover {
         padding: 1.5rem;
     }
 }
+
+a{
+    color: grey;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover{
+    color: skyblue;
+    text-decoration: underline;
+}

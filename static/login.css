@@ -99,3 +99,16 @@ button {
 button:hover {
     background-color: #922000;
 }
+
+
+
+a{
+    color: grey;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover{
+    color: skyblue;
+    text-decoration: underline;
+}
