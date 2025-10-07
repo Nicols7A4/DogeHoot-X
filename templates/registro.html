@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/registro.css">
+    <!-- Cambié la ruta absoluta a url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro.css') }}">
     <title>Registro</title>
 </head>
 
@@ -13,7 +14,8 @@
         <div class="cabecera">
             <h1>Registro</h1>
             <h1>¡Únete a DogeHoot-X!</h1>
-            <img src="../static/img/logo.png" alt="Logo">
+            <!-- También aquí cambié la ruta de la imagen -->
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
         </div>
 
         <form class="formulario" action="{{ url_for('registro') }}" method="post">
@@ -23,22 +25,22 @@
 
             <div class="f-fila">
                 <span>Nombre Completo</span>
-                <input type="text" name="nombre" placeholder="Ingresa tu nombre completo">
+                <input type="text" name="nombre" placeholder="Ingresa tu nombre completo" required>
             </div>
 
             <div class="f-fila">
                 <span>Nombre de Usuario</span>
-                <input type="text" name="usuario" placeholder="Crea tu nombre de usuario">
+                <input type="text" name="usuario" placeholder="Crea tu nombre de usuario" required>
             </div>
 
             <div class="f-fila">
                 <span>Correo Electrónico</span>
-                <input type="email" name="correo" placeholder="Ingresa tu correo electrónico">
+                <input type="email" name="correo" placeholder="Ingresa tu correo electrónico" required>
             </div>
 
             <div class="f-fila">
                 <span>Contraseña</span>
-                <input type="password" name="contrasena" placeholder="Crea una contraseña segura">
+                <input type="password" name="contrasena" placeholder="Crea una contraseña segura" required>
             </div>
 
             <div class="f-fila">

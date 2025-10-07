@@ -163,6 +163,89 @@ def registro():
 
     return render_template('registro.html')
 
+@app.route("/api_insertarusuarios", methods=["POST"])
+def api_insertarusuarios():
+    rpta = dict()
+    try:
+        nombre_completo = request.json["nombre_completo"]
+        nombre_usuario = request.json["nombre_usuario"]
+        correo_electronico = request.json["correo_electronico"]
+        contrasena = request.json["contrasena"]
+        tipo_cuenta = request.json["tipo_cuenta"]
+
+        controlador_usuarios.insertar_usuario(
+            nombre_completo, nombre_usuario, correo_electronico, contrasena, tipo_cuenta
+        )
+
+        rpta["code"] = 1
+        rpta["data"] = {}
+        rpta["message"] = "Usuario insertado correctamente"
+
+    except Exception as e:
+        rpta["code"] = 0
+        rpta["data"] = []
+        rpta["message"] = "Ocurrió el siguiente error: " + repr(e)
+
+    return jsonify(rpta)
+
+
+@app.route("/api_actualizarusuarios", methods=["PUT"])
+def api_actualizarusuarios():
+    rpta = dict()
+    try:
+        id_usuario = request.json["id_usuario"]
+        nombre_completo = request.json["nombre_completo"]
+        nombre_usuario = request.json["nombre_usuario"]
+        correo_electronico = request.json["correo_electronico"]
+        contrasena = request.json["contrasena"]
+        tipo_cuenta = request.json["tipo_cuenta"]
+
+        controlador_usuarios.actualizar_usuario(
+            nombre_completo, nombre_usuario, correo_electronico, contrasena, tipo_cuenta, id_usuario
+        )
+
+        rpta["code"] = 1
+        rpta["data"] = {}
+        rpta["message"] = "Usuario actualizado correctamente"
+
+    except Exception as e:
+        rpta["code"] = 0
+        rpta["data"] = []
+        rpta["message"] = "Ocurrió el siguiente error: " + repr(e)
+
+    return jsonify(rpta)
+
+
+@app.route("/api_eliminarusuario", methods=['POST'])
+def api_eliminarusuario():
+    rpta = dict()
+    try:
+        id_usuario = request.json["id_usuario"]
+        controlador_usuarios.eliminar_usuario(id_usuario)
+        rpta["code"] = 1
+        rpta["data"] = {}
+        rpta["message"] = "Usuario eliminado correctamente"
+    except Exception as e:
+        rpta["code"] = 0
+        rpta["data"] = {}
+        rpta["message"] = "Ocurrió el siguiente error: %s" % repr(e)
+    return jsonify(rpta)
+
+
+@app.route("/api_obtenerusuarios")
+def api_obtenerusuarios():
+    rpta = dict()
+    try:
+        usuarios = controlador_usuarios.obtener_usuarios()
+        rpta["code"] = 1
+        rpta["data"] = usuarios
+        rpta["message"] = "Usuarios obtenidos correctamente"
+    except Exception as e:
+        rpta["code"] = 0
+        rpta["data"] = []
+        rpta["message"] = "Ocurrió el siguiente error: %s" % repr(e)
+    return jsonify(rpta)
+
 @app.route('/home')
 def home():
     return render_template('home.html')
