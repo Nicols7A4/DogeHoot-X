@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/ingresarPin.css">
+    <title>Ingresar PIN</title>
+</head>
+
+<body>
+    <div class="page">
+        <header class="title-banner">
+            <h1 class="page-title">DogeHoot X</h1>
+        </header>
+
+        <div class="top-actions">
+            <div class="guest-status">
+                <span class="guest-badge">Entrando como invitado</span>
+                <a class="login-link" href="{{ url_for('login') }}">Iniciar sesión</a>
+            </div>
+            <a class="menu-button" href="{{ url_for('inicio') }}">Ir al menú principal</a>
+        </div>
+
+        <main class="entry-area">
+            <section class="character-card" aria-labelledby="character-title">
+                <figure class="character-figure">
+                    <div class="character-placeholder" role="img" aria-label="Imagen referencial del personaje">
+                        <span>Imagen referencial</span>
+                    </div>
+                    <figcaption id="character-title">¿Personaje?</figcaption>
+                </figure>
+            </section>
+
+            <button class="reroll-button" type="button">
+                ¿Personaje aleatorio?
+            </button>
+        </main>
+
+        <section class="form-section" aria-labelledby="form-title">
+            <p id="form-title" class="form-instruction">
+                Ingrese su nombre y el PIN para entrar a jugar
+            </p>
+
+            <form class="access-form" action="#" method="post">
+                <label class="input-group">
+                    <span class="sr-only">Nombre del jugador</span>
+                    <input type="text" name="player_name" placeholder="*Ingresar nombre*" autocomplete="name" required>
+                </label>
+                <label class="input-group">
+                    <span class="sr-only">PIN del cuestionario</span>
+                    <input type="text" name="pin_code" placeholder="*123-456*" inputmode="numeric" required>
+                </label>
+                <button class="submit-button" type="submit">Entrar</button>
+            </form>
+
+            <p class="session-tip">Consejo: ¡Inicia sesión y guarda tus recompensas!</p>
+        </section>
+    </div>
+</body>
+
+</html>

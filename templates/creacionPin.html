@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/creacionPin.css">
+    <title>Creación de PIN</title>
+</head>
+
+<body>
+    <div class="page">
+        <header class="top-bar">
+            <a class="back-link" href="{{ url_for('inicio') }}">&larr; Atrás</a>
+            <h1>Juego en espera</h1>
+        </header>
+
+        <main class="lobby">
+            <section class="pin-card">
+                <h2>DogeHoot X</h2>
+                <div class="pin-display">
+                    <span class="pin-digits">&#10033; &#10033; &#10033; &#10033;</span>
+                    <button class="copy-button" type="button" aria-label="Copiar PIN">
+                        <span class="icon-link"></span>
+                    </button>
+                </div>
+                <p class="pin-hint">Comparte este PIN con tus alumnos para que puedan unirse.</p>
+            </section>
+
+            <aside class="control-panel">
+                <button class="action-button primary" type="button">Iniciar</button>
+                <button class="action-button secondary" type="button">Editar</button>
+                <div class="timer">
+                    <span class="timer-label">Cuenta regresiva</span>
+                    <span class="timer-value">05:00</span>
+                </div>
+            </aside>
+        </main>
+
+        <section class="participants">
+            <h3 class="participants-title">Observa qué estudiantes ya se unieron a tu cuestionario</h3>
+            <div class="participants-grid">
+                <!-- {% for _ in range(6) %} -->
+                <div class="participant-card">
+                    <div class="participant-avatar">
+                        <!-- <img src="{{ url_for('static', filename='../img/participante_icon.png') }}" > -->
+                    </div>
+                    <span class="participant-name">Nombre</span>
+                </div>
+                <!-- {% endfor %} -->
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+:root {
+    --accent: #da4116;
+    --purple: #572bc4;
+    --pink: #ff66c4;
+    --dark-purple: #5c488f;
+    --text-dark: #1c1233;
+    --text-muted: rgba(28, 18, 51, 0.65);
+    --text-light: #fef3ff;
+    --surface: #ffffff;
+    --surface-muted: rgba(255, 255, 255, 0.88);
+    --shadow: rgba(28, 18, 51, 0.16);
+    font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.6rem 1.2rem;
+    background: #f0f0f0 url('../img/fondo_login.png') no-repeat center center / cover;
+    color: var(--text-dark);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.page {
+    width: min(1080px, 100%);
+    background: var(--surface-muted);
+    border-radius: 24px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 30px 60px -28px var(--shadow);
+    padding: 2rem 2.2rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.title-banner {
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 2px solid rgba(87, 43, 196, 0.12);
+    background: var(--surface);
+    box-shadow: inset 0 -4px 0 rgba(87, 43, 196, 0.08);
+}
+
+.page-title {
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dark-purple);
+}
+
+.top-actions {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.2rem;
+}
+
+.guest-status {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.guest-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 1.4rem;
+    background: rgba(87, 43, 196, 0.12);
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--dark-purple);
+}
+
+.login-link {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 200ms ease, transform 200ms ease;
+}
+
+.login-link:hover {
+    color: var(--dark-purple);
+    transform: translateY(-1px);
+}
+
+.menu-button {
+    align-self: flex-start;
+    padding: 0.6rem 1.7rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(87, 43, 196, 0.18);
+    box-shadow: 0 14px 28px -24px var(--shadow);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--dark-purple);
+    transition: transform 200ms ease, filter 200ms ease;
+}
+
+.menu-button:hover {
+    filter: brightness(1.05);
+    transform: translateY(-2px);
+}
+
+.entry-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.2rem, 4vw, 2.6rem);
+    flex-wrap: wrap;
+}
+
+.character-card {
+    background: var(--surface);
+    border-radius: 22px;
+    padding: 1.8rem 2rem;
+    border: 2px solid rgba(87, 43, 196, 0.12);
+    box-shadow: 0 24px 48px -32px var(--shadow);
+}
+
+.character-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    text-align: center;
+}
+
+.character-placeholder {
+    width: clamp(180px, 20vw, 260px);
+    height: clamp(220px, 26vw, 330px);
+    border-radius: 18px;
+    border: 2px dashed rgba(87, 43, 196, 0.22);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(249, 237, 247, 0.8));
+    display: grid;
+    place-content: center;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.character-figure figcaption {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark-purple);
+}
+
+.reroll-button {
+    width: clamp(160px, 16vw, 190px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: none;
+    padding: 1.4rem;
+    background: linear-gradient(120deg, rgba(255, 102, 196, 0.85), rgba(87, 43, 196, 0.85));
+    color: var(--text-light);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 24px 46px -32px var(--shadow);
+    cursor: pointer;
+    transition: transform 200ms ease, filter 200ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.reroll-button:hover {
+    filter: brightness(1.07);
+    transform: translateY(-4px);
+}
+
+.form-section {
+    background: var(--surface);
+    border-radius: 22px;
+    padding: 2rem 2.4rem;
+    border: 2px solid rgba(255, 102, 196, 0.2);
+    box-shadow: 0 24px 48px -32px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+}
+
+.form-instruction {
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    color: var(--dark-purple);
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.access-form {
+    width: min(420px, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.85rem 1.1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(87, 43, 196, 0.22);
+    background: rgba(255, 255, 255, 0.92);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    color: var(--text-dark);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.input-group input::placeholder {
+    color: rgba(28, 18, 51, 0.45);
+    text-transform: uppercase;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: rgba(87, 43, 196, 0.5);
+    box-shadow: 0 0 0 4px rgba(87, 43, 196, 0.15);
+}
+
+.submit-button {
+    margin-top: 0.4rem;
+    border: none;
+    border-radius: 16px;
+    background: var(--accent);
+    color: var(--surface);
+    padding: 0.95rem 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 24px 48px -32px var(--shadow);
+    transition: transform 200ms ease, filter 200ms ease;
+}
+
+.submit-button:hover {
+    filter: brightness(1.07);
+    transform: translateY(-3px);
+}
+
+.session-tip {
+    font-size: 0.9rem;
+    color: rgba(28, 18, 51, 0.7);
+    text-align: center;
+}
+
+@media (max-width: 720px) {
+    .page {
+        padding: 1.6rem 1.4rem 1.8rem;
+    }
+
+    .top-actions {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .guest-status {
+        align-items: center;
+    }
+
+    .menu-button {
+        align-self: center;
+    }
+
+    .form-section {
+        padding: 1.6rem 1.8rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .title-banner {
+        padding: 1.6rem;
+    }
+
+    .page-title {
+        letter-spacing: 0.12em;
+    }
+
+    .reroll-button {
+        width: 150px;
+    }
+}
