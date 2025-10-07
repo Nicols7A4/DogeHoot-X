@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repositorio Personal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/repositorio.css') }}">
+</head>
+<body style="background-image: url('{{ url_for('static', filename='img/background.jpg') }}');">
+    <div class="header"></div>
+    
+    <div class="container">
+        <div class="top-section">
+            <a href="#" class="back-button" onclick="return false;">
+                <span>Atrás</span>
+            </a>
+            <div class="user-info">
+                <div class="user-avatar">US</div>
+                <div class="user-name">Nombre de usuario</div>
+            </div>
+        </div>
+
+        <h1>Repositorio Personal</h1>
+
+        <div class="search-section">
+            <label for="search">Buscar</label>
+            <input type="text" id="search" placeholder="Buscar cuestionarios...">
+        </div>
+
+        <div class="main-content">
+            <aside class="filters-sidebar">
+                <h3>Filtros</h3>
+                <div class="filter-info">Resultados (300)</div>
+                <input type="text" class="filter-input" placeholder="F1">
+                <input type="text" class="filter-input" placeholder="F2">
+                <input type="text" class="filter-input" placeholder="F3">
+                <input type="text" class="filter-input" placeholder="F4">
+                <input type="text" class="filter-input" placeholder="F5">
+            </aside>
+
+            <div class="questionnaires">
+                <div class="questionnaire-card">
+                    <div class="questionnaire-header" onclick="toggleCard(this)">
+                        <h2 class="questionnaire-title">CUESTIONARIO 1</h2>
+                        <span class="expand-icon">∨</span>
+                    </div>
+                    <div class="questionnaire-content">
+                        <div class="image-placeholder">
+                            Imagen referencial
+                        </div>
+                        <div class="content-details">
+                            <div class="rating">★★★★★</div>
+                            <div class="description">Descripción básica del form</div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="stat-icon">👁</span>
+                                    <span>800</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">👤</span>
+                                    <span>800</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn">Editar</button>
+                            <button class="btn">Clonar</button>
+                            <button class="btn">Borrar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="questionnaire-card">
+                    <div class="questionnaire-header" onclick="toggleCard(this)">
+                        <h2 class="questionnaire-title">CUESTIONARIO 2</h2>
+                        <span class="expand-icon">∨</span>
+                    </div>
+                    <div class="questionnaire-content">
+                        <div class="image-placeholder">
+                            Imagen referencial
+                        </div>
+                        <div class="content-details">
+                            <div class="rating">★★★★★</div>
+                            <div class="description">Descripción básica del form</div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="stat-icon">👁</span>
+                                    <span>800</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">👤</span>
+                                    <span>800</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn">Editar</button>
+                            <button class="btn">Clonar</button>
+                            <button class="btn">Borrar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="questionnaire-card">
+                    <div class="questionnaire-header" onclick="toggleCard(this)">
+                        <h2 class="questionnaire-title">CUESTIONARIO 3</h2>
+                        <span class="expand-icon">∨</span>
+                    </div>
+                    <div class="questionnaire-content">
+                        <div class="image-placeholder">
+                            Imagen referencial
+                        </div>
+                        <div class="content-details">
+                            <div class="rating">★★★★★</div>
+                            <div class="description">Descripción básica del form</div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="stat-icon">👁</span>
+                                    <span>800</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">👤</span>
+                                    <span>800</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn">Editar</button>
+                            <button class="btn">Clonar</button>
+                            <button class="btn">Borrar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="questionnaire-card">
+                    <div class="questionnaire-header" onclick="toggleCard(this)">
+                        <h2 class="questionnaire-title">CUESTIONARIO 4</h2>
+                        <span class="expand-icon">∨</span>
+                    </div>
+                    <div class="questionnaire-content">
+                        <div class="image-placeholder">
+                            Imagen referencial
+                        </div>
+                        <div class="content-details">
+                            <div class="rating">★★★★★</div>
+                            <div class="description">Descripción básica del form</div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="stat-icon">👁</span>
+                                    <span>800</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-icon">👤</span>
+                                    <span>800</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn">Editar</button>
+                            <button class="btn">Clonar</button>
+                            <button class="btn">Borrar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="load-more">
+                    <button>Ver más</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+
+    <script src="{{ url_for('static', filename='js/repositorio.js') }}"></script>
+</body>
+</html>
