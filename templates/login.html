@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/login.css">
+    <link rel="stylesheet" href="../static/css/login.css">
     <title>Iniciar Sesión</title>
 </head>
 
@@ -23,15 +23,15 @@
             </p>
             <div class="f-fila">
                 <span>Correo electrónico</span>
-                <input type="email" placeholder="Ingresa tu correo electrónico" name="correologin">
+                <input type="email" placeholder="Ingresa tu correo electrónico" name="correologin" requested>
             </div>
             <div class="f-fila">
                 <span>Contraseña</span>
-                <input type="password" placeholder="Ingresa tu contraseña" name="contrasenaLogin">
+                <input type="password" placeholder="Ingresa tu contraseña" name="contrasenaLogin" requested>
             </div>
+            <span class="btn-restablecer-contrasenia">¿Olvidaste tu contraseña?</span>
             <button type="submit">Iniciar Sesión</button>
-            <span>¿Olvidaste tu contraseña?</span>
-            <button type="">Iniciar Sesión con Google</button>
+            <button type="" style="display: none;">Iniciar Sesión con Google</button>
             <span>¿Aún no tienes una cuenta?</span>
             <a href="{{ url_for('registro') }}"><button type="button">Registrarse</button></a>
             <a href="{{ url_for('inicio') }}">Inicio</a>
