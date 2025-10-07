@@ -4,36 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/login.css">
+    <!-- CSS con url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     <title>Iniciar Sesión</title>
 </head>
 
 <body>
-
-
     <div class="contenedor-formulario">
         <div class="cabecera">
             <h1>Iniciar Sesión</h1>
             <h1>¡Bienvenido a DogeHoot-X!</h1>
-            <img src="../static/img/logo.png">
+            <!-- Imagen con url_for -->
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
         </div>
-        <form class="formulario" action="{{ url_for('login')}}" method="post">
+
+        <form class="formulario" action="{{ url_for('login') }}" method="post">
             <p>
                 {{ mensaje }}
             </p>
+
             <div class="f-fila">
                 <span>Correo electrónico</span>
-                <input type="email" placeholder="Ingresa tu correo electrónico" name="correologin" requested>
+                <input type="email" placeholder="Ingresa tu correo electrónico" name="correologin" required>
             </div>
+
             <div class="f-fila">
                 <span>Contraseña</span>
-                <input type="password" placeholder="Ingresa tu contraseña" name="contrasenaLogin" requested>
+                <input type="password" placeholder="Ingresa tu contraseña" name="contrasenaLogin" required>
             </div>
+
             <span class="btn-restablecer-contrasenia">¿Olvidaste tu contraseña?</span>
+
             <button type="submit">Iniciar Sesión</button>
-            <button type="" style="display: none;">Iniciar Sesión con Google</button>
+            <button type="button" style="display: none;">Iniciar Sesión con Google</button>
+
             <span>¿Aún no tienes una cuenta?</span>
-            <a href="{{ url_for('registro') }}"><button type="button">Registrarse</button></a>
+            <!-- Cambié el button dentro del <a> para hacerlo más correcto -->
+            <a href="{{ url_for('registro') }}" class="btn-link">Registrarse</a>
             <a href="{{ url_for('inicio') }}">Inicio</a>
         </form>
     </div>
