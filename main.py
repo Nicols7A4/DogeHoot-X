@@ -1,9 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for
 import pymysql.cursors
-from flask import Flask, render_template, request, redirect, flash, jsonify
-import controlador_usuarios
-import json
-import requests
+
 app = Flask(__name__)
 
 def conectar_bd():
