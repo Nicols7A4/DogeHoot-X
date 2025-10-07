@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for
 import pymysql.cursors
-
+#
 app = Flask(__name__)
 
 def conectar_bd():
