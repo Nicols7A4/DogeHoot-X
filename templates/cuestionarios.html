@@ -1,0 +1,45 @@
+{% extends "maestra.html" %}
+{% block titulo %}Listado{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">Cuestionarios</h1>
+        <a href="{{ url_for('formulario_agregar_cuestionario') }}" class="button is-success">Agregar Cuestionario</a>
+        <table class="table is-striped is-hoverable is-fullwidth mt-4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Es Público</th>
+                    <th>Propietario</th>
+                    <th>Fecha Creación</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in cuestionarios %}
+                <tr>
+                    <td>{{ c.id_cuestionario }}</td>
+                    <td>{{ c.titulo }}</td>
+                    <td>{{ c.descripcion }}</td>
+                    <td>{{ 'Sí' if c.es_publico else 'No' }}</td>
+                    <td>{{ c.id_propietario }}</td>
+                    <td>{{ c.fecha_creacion }}</td>
+                    <td>
+                        <a href="#" class="button is-info is-small">Editar</a>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('eliminar_cuestionario') }}" method="POST">
+                            <input type="hidden" name="id" value="{{ c.id_cuestionario }}">
+                            <button class="button is-danger is-small">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

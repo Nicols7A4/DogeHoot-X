@@ -1,0 +1,50 @@
+{% extends "maestra.html" %}
+{% block titulo %}Listado de Cuestionarios{% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="container">
+        <h1 class="title has-text-centered">Listado de Cuestionarios</h1>
+
+        <div class="has-text-centered mb-4">
+            <a href="{{ url_for('formulario_cuestionario') }}" class="button is-primary">➕ Nuevo Cuestionario</a>
+        </div>
+
+        <table class="table is-fullwidth is-striped is-hoverable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Es Público</th>
+                    <th>ID Propietario</th>
+                    <th>Fecha Creación</th>
+                    <th>Fecha Actualización</th>
+                    <th>ID Cuestionario Origen</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in cuestionarios %}
+                <tr>
+                    <td>{{ c.id_cuestionario }}</td>
+                    <td>{{ c.titulo }}</td>
+                    <td>{{ c.descripcion }}</td>
+                    <td>
+                        {% if c.es_publico %}
+                            <span class="tag is-success">Sí</span>
+                        {% else %}
+                            <span class="tag is-danger">No</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ c.id_propietario }}</td>
+                    <td>{{ c.fecha_creacion }}</td>
+                    <td>{{ c.fecha_actualizacion }}</td>
+                    <td>{{ c.id_cuestionario_origen or '-' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}

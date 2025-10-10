@@ -1,0 +1,53 @@
+{% extends "maestra.html" %}
+{% block titulo %}Registrar Cuestionario{% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="container">
+        <h1 class="title has-text-centered">Registrar Cuestionario</h1>
+        <div class="box" style="max-width: 600px; margin: auto;">
+            <form action="/guardar" method="POST">
+                <div class="field">
+                    <label class="label">Título</label>
+                    <div class="control">
+                        <input class="input" type="text" name="titulo" placeholder="Ingrese el título" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Descripción</label>
+                    <div class="control">
+                        <textarea class="textarea" name="descripcion" placeholder="Ingrese la descripción" required></textarea>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox" name="es_publico">
+                        ¿Es público?
+                    </label>
+                </div>
+
+                <div class="field">
+                    <label class="label">ID del Propietario</label>
+                    <div class="control">
+                        <input class="input" type="number" name="id_propietario" placeholder="Ejemplo: 1" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">ID Cuestionario Origen (opcional)</label>
+                    <div class="control">
+                        <input class="input" type="number" name="id_cuestionario_origen" placeholder="Ejemplo: 5">
+                    </div>
+                </div>
+
+                <div class="field has-text-centered">
+                    <button class="button is-success" type="submit">Guardar Cuestionario</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
